@@ -26,32 +26,19 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-
-/**
- * Realiza login e retorna o token de autenticação.
- * @returns {Cypress.Chainable}
- */
 Cypress.Commands.add('login', () => {
-    return cy.request({
+    cy.request({
         method: 'POST',
         url: '/auth',
         body: {
-            username: "admin",
-            password: "password123"
+            "username": "admin",
+            "password": "password123"
         }
-    });
-});
+    })
+})
 
-
-/**
- * Altera uma reserva existente.
- * @param {number} id_reserva - ID da reserva
- * @param {string} token - Token de autenticação
- * @param {Object} payload_reserva_alterada - Dados da reserva alterada
- * @returns {Cypress.Chainable}
- */
 Cypress.Commands.add('alterar_reserva', (id_reserva, token, payload_reserva_alterada) => {
-    return cy.request({
+    cy.request({
         method: 'PUT',
         url: `/booking/${id_reserva}`,
         headers: {
@@ -59,18 +46,12 @@ Cypress.Commands.add('alterar_reserva', (id_reserva, token, payload_reserva_alte
         },
         body: payload_reserva_alterada
     });
-});
+})
 
-
-/**
- * Cadastra uma nova reserva.
- * @param {Object} payload_reserva - Dados da reserva
- * @returns {Cypress.Chainable}
- */
 Cypress.Commands.add('cadastrar_reserva', (payload_reserva) => {
-    return cy.request({
+    cy.request({
         method: 'POST',
         url: '/booking',
         body: payload_reserva,
     });
-});
+})
