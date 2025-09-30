@@ -68,12 +68,21 @@ npm install
 ```bash
 # Interface gráfica do Cypress (recomendado para desenvolvimento)
 npm run cy:open
+# ou
+npx cypress open
 
 # Modo headless (para CI/CD)
 npm run cy:run
+# ou
+npx cypress run
 
 # Executar apenas um teste específico
 npx cypress run --spec "cypress/e2e/cadastrar-reserva.cy.js"
+
+# Verificar se o Cypress está instalado corretamente
+npm run cy:verify
+# ou
+npx cypress verify
 ```
 
 ---
@@ -154,6 +163,8 @@ const reservaCustomizada = makeBooking({
 
 ```bash
 $ npm run cy:run
+# ou
+$ npx cypress run
 
 ====================================================================================================
 
